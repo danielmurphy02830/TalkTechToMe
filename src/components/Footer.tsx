@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <span className="text-slate-500">Head of SRE @ PwC</span>
+                <span className="text-slate-500">Principal AI Architect @ PwC</span>
               </li>
               <li>
                 <span className="text-slate-500">20+ Years in Tech</span>

@@ -3,11 +3,7 @@ import {
   ExternalLink, 
   Sparkles, 
   Globe, 
-  CheckCircle2, 
-  ArrowRight,
-  ShieldCheck,
-  Zap,
-  Layers
+  ArrowRight
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
 import { YouTubeIcon, SubstackIcon, MediumIcon, LinkedinIcon } from './Icons';
@@ -100,7 +96,7 @@ export const IntroSection: React.FC = () => {
                 {BRAND_INFO.creator}
               </h2>
               <p className="text-xs font-mono text-[#FFBF00] font-semibold mt-1">
-                Founder of TalkTechToMe &bull; Head of SRE @ PwC
+                Founder of TalkTechToMe &bull; Principal AI Architect @ PwC
               </p>
               <p className="text-xs text-slate-400 font-mono mt-1">
                 talktechtome.co.uk
@@ -138,22 +134,6 @@ export const IntroSection: React.FC = () => {
                 <p>
                   Whether you&apos;re a creator, developer, marketer, or just tech-curious, subscribe for clear insights into the software shaping our future. Every review, benchmark, and article is grounded in 20+ years of hands-on technical architecture and engineering leadership.
                 </p>
-              </div>
-
-              {/* Core Pillars Pills */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-[#0B0F19] border border-[#1F2937]">
-                  <CheckCircle2 className="w-4 h-4 text-[#FFBF00] shrink-0" />
-                  <span className="text-xs text-slate-200 font-medium">Text-to-Video & Synthesia</span>
-                </div>
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-[#0B0F19] border border-[#1F2937]">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span className="text-xs text-slate-200 font-medium">AI Coding & Cursor IDE</span>
-                </div>
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-[#0B0F19] border border-[#1F2937]">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-xs text-slate-200 font-medium">Pricing & ROI Teardowns</span>
-                </div>
               </div>
 
             </div>

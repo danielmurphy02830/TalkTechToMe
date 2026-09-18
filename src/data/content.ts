@@ -60,7 +60,7 @@ export const BRAND_INFO = {
   domain: "talktechtome.co.uk",
   contactEmail: "danielmurphy02830@gmail.com",
   description: "Welcome! I'm Dan Murphy, and here we explore the exciting world of AI tools and modern technology. From deep dives into text-to-video apps like Synthesia and AI coding assistants like Cursor, to practical demos and honest reviews – we break down how these tools work, their features, pricing, and real-world applications. Whether you're a creator, developer, marketer, or just tech-curious, subscribe for clear insights into the software shaping our future.",
-  shortBio: "Head of SRE & Technical Architect dissecting text-to-video apps, AI coding assistants, and modern cloud innovations.",
+  shortBio: "Principal AI Architect & Technical Leader dissecting text-to-video apps, AI coding assistants, and modern cloud innovations.",
   stats: {
     modelsReviewed: "50+",
     videoDemos: "25+",
