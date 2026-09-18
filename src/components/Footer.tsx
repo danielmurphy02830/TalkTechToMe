@@ -106,6 +106,9 @@ export const Footer: React.FC = () => {
                 <a href="#about" className="hover:text-cyan-400 transition-colors">About Dan Murphy</a>
               </li>
               <li>
+                <a href="#career" className="hover:text-cyan-400 transition-colors">Career Journey</a>
+              </li>
+              <li>
                 <a href="#collaborate" className="hover:text-cyan-400 transition-colors">Collaborate & Inquiries</a>
               </li>
             </ul>

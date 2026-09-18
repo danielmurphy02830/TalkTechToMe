@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { TopicPillars } from './components/TopicPillars';
 import { MediaShowcase } from './components/MediaShowcase';
 import { AboutSection } from './components/AboutSection';
+import { CareerSection } from './components/CareerSection';
 import { CollaborationSection } from './components/CollaborationSection';
 import { Footer } from './components/Footer';
 
@@ -16,6 +17,7 @@ export const App: React.FC = () => {
         <TopicPillars />
         <MediaShowcase />
         <AboutSection />
+        <CareerSection />
         <CollaborationSection />
       </main>
       <Footer />

@@ -127,3 +127,67 @@ export const COLLABORATION_TYPES = [
   { id: "speaking", label: "Consulting / Speaking / Podcast", desc: "Keynotes, panel discussions, or technical advisory" },
   { id: "other", label: "General Inquiry", desc: "Have an interesting tech idea or collaboration concept?" }
 ];
+
+export interface CareerItem {
+  id: string;
+  period: string;
+  role: string;
+  company: string;
+  employmentType?: string;
+  location: string;
+  url?: string;
+  description: string;
+}
+
+export const CAREER_HISTORY: CareerItem[] = [
+  {
+    id: "career-talktechtome",
+    period: "CURRENT - 2024",
+    role: "Founder & AI Technology Creator",
+    company: "TalkTechToMe",
+    employmentType: "(creator & media)",
+    location: "London / Remote",
+    url: "https://talktechtome.co.uk",
+    description: "Dissecting the rapid evolution of artificial intelligence and software engineering. Producing in-depth evaluations, honest reviews, and hands-on demonstrations of AI coding assistants like Cursor and generative video suites like Synthesia. Authoring technical deep dives on Substack, Medium, and YouTube to help developers, creators, and business leaders make informed decisions on cutting-edge software."
+  },
+  {
+    id: "career-pwc",
+    period: "2021 - 2024",
+    role: "Head of Site Reliability Engineering (SRE)",
+    company: "PwC",
+    employmentType: "(fulltime)",
+    location: "Belfast / London",
+    url: "https://pwc.com",
+    description: "Headed enterprise Site Reliability Engineering across high-scale digital operations and multi-cloud environments. Directed initiatives combining AI-driven ChatOps, intelligent anomaly detection, and automated golden signal tracking to eliminate operational toil and mitigate alert fatigue. Advocated for a culture of innovation, mentoring emerging SRE practitioners, and establishing resilient architectures across enterprise-grade platforms."
+  },
+  {
+    id: "career-lead-architect",
+    period: "2016 - 2021",
+    role: "Lead Technical Architect & DevOps Strategist",
+    company: "Enterprise Cloud Advisory",
+    employmentType: "(fulltime)",
+    location: "United Kingdom",
+    url: "https://danmurphy.life",
+    description: "Architected modern cloud migrations, distributed architectures, and automated CI/CD pipelines across diverse industry sectors spanning startups to Fortune 500 enterprises. Bridged complex engineering problems with high-level business goals, instituting observability, automated disaster recovery, and infrastructure-as-code principles."
+  },
+  {
+    id: "career-senior-engineer",
+    period: "2010 - 2016",
+    role: "Senior Systems & Infrastructure Engineer",
+    company: "Infrastructure Operations",
+    employmentType: "(fulltime)",
+    location: "United Kingdom",
+    url: "https://danmurphy.life",
+    description: "Engineered scalable server environments, virtualization clusters, and high-availability operations with 99.99% uptime SLAs. Led incident post-mortems, root-cause diagnostics, and monitoring rollouts to drastically reduce mean time to resolution (MTTR)."
+  },
+  {
+    id: "career-l1-engineer",
+    period: "2004 - 2010",
+    role: "L1 Service Desk & Systems Engineer",
+    company: "Technology Services",
+    employmentType: "(fulltime)",
+    location: "United Kingdom",
+    description: "Launched a 20+ year journey in technical operations. Mastered frontline problem-solving, hardware/network troubleshooting, and user support, building the core technical foundation and operational empathy that underpinned subsequent strategic leadership roles."
+  }
+];
+
