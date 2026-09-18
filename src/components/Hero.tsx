@@ -1,202 +1,216 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  Tv, 
-  BookOpen, 
   Sparkles, 
   ArrowRight, 
-  CheckCircle2, 
-  Terminal, 
-  Cpu, 
-  Video, 
-  Code2, 
-  ExternalLink 
+  SlidersHorizontal, 
+  ExternalLink,
+  Flame,
+  Star,
+  Download
 } from 'lucide-react';
-import { BRAND_INFO } from '../data/content';
+import { BRAND_INFO, HF_EXPLORER_TASKS, HF_EXPLORER_MODELS, HFModel } from '../data/content';
 
 export const Hero: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('Main');
+  const [selectedTask, setSelectedTask] = useState('Text-to-Video');
+  const [paramFilter, setParamFilter] = useState('Agentic');
+
+  const filteredModels = selectedTask === 'All' 
+    ? HF_EXPLORER_MODELS 
+    : HF_EXPLORER_MODELS.filter(m => 
+        selectedTask === 'Text-to-Video' ? m.category.toLowerCase().includes('video') :
+        selectedTask === 'AI Coding' ? m.category.toLowerCase().includes('code') || m.category.toLowerCase().includes('ide') || m.category.toLowerCase().includes('terminal') :
+        true
+      );
+
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-grid-pattern">
-      {/* Ambient glowing radial orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-cyan-500/15 blur-[120px] pointer-events-none rounded-full" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[300px] bg-purple-500/15 blur-[120px] pointer-events-none rounded-full" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Headlines and Calls to Action */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+    <section className="pt-8 pb-14 bg-[#0B0F19]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Hugging Face Split Card Container */}
+        <div className="bg-[#111827] border border-[#1F2937] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
             
-            {/* Live Indicator Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-mono text-cyan-300 shadow-sm backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-              </span>
-              <span>talktechtome.co.uk &bull; Official Platform</span>
-            </div>
+            {/* Left Column: Brand & Hero Headline */}
+            <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1F2937] bg-gradient-to-b from-[#111827] to-[#0D121F]">
+              <div>
+                {/* Yellow Hugging Face style mascot emoji */}
+                <div className="w-16 h-16 rounded-2xl bg-[#FFBF00] flex items-center justify-center text-3xl shadow-lg shadow-[#FFBF00]/10 mb-6 transform -rotate-2 hover:rotate-0 transition-transform">
+                  🤗
+                </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-              Exploring The Frontier Of{' '}
-              <span className="text-gradient">AI Tools</span> & Modern Tech
-            </h1>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-5">
+                  The AI tools platform shaping our future.
+                </h1>
 
-            {/* Sub-headline from Dan's description */}
-            <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Welcome! I&apos;m <strong className="text-white font-semibold">{BRAND_INFO.creator}</strong>. 
-              We break down the cutting-edge software shaping our future – from deep dives into 
-              text-to-video apps like <span className="text-cyan-400 font-medium">Synthesia</span> to 
-              AI coding assistants like <span className="text-purple-400 font-medium">Cursor</span>.
-            </p>
-
-            {/* Key Value Bullets */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto lg:mx-0 text-xs font-medium text-slate-300">
-              <div className="flex items-center gap-2 justify-center lg:justify-start bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Zero-Fluff Reviews</span>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
+                  The independent platform where developers, creators, and leaders explore in-depth AI tool reviews, agentic coding benchmarks, and video synthesis demonstrations.
+                </p>
               </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Hands-on Code & Demos</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Pricing & ROI Analysis</span>
+
+              {/* Hero CTA buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href="#trending"
+                  className="px-5 py-2.5 rounded-lg bg-[#1F2937] hover:bg-[#374151] text-white text-xs font-semibold border border-slate-700 hover:border-slate-500 transition-all"
+                >
+                  Explore AI Tools
+                </a>
+                <span className="text-xs text-slate-500">or</span>
+                <a
+                  href="#spaces"
+                  className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
+                >
+                  Browse Video Demos &rarr;
+                </a>
               </div>
             </div>
 
-            {/* Call to Actions */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-              <a
-                href={BRAND_INFO.socials.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all active:scale-95"
-              >
-                <Tv className="w-4 h-4" />
-                <span>Watch on YouTube</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
-              </a>
-
-              <a
-                href={BRAND_INFO.socials.substack}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 hover:border-slate-600 shadow-md transition-all active:scale-95"
-              >
-                <BookOpen className="w-4 h-4 text-orange-400" />
-                <span>Read Newsletter</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-              </a>
-
-              <a
-                href="#collaborate"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold text-sm shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all active:scale-95"
-              >
-                <span>Collaborate</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column: High-tech Visual Interactive Card */}
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            {/* Right Column: Interactive Catalog Explorer */}
+            <div className="lg:col-span-7 p-6 sm:p-8 bg-[#0D1321] flex flex-col justify-between">
               
-              {/* Decorative background glow frame */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 opacity-30 blur-lg transition duration-1000 group-hover:opacity-60" />
-              
-              <div className="relative rounded-2xl bg-[#0d1424] border border-slate-800/90 shadow-2xl overflow-hidden">
-                
-                {/* Terminal Window Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#0a0f1d] border-b border-slate-800/80">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <div>
+                {/* Top Category Tabs */}
+                <div className="flex items-center justify-between border-b border-[#1F2937] pb-3 mb-5">
+                  <div className="flex items-center gap-2 overflow-x-auto text-xs font-medium">
+                    {['Main', 'Tasks', 'Categories', 'Benchmarks', 'Reviews'].map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`px-3 py-1 rounded-md transition-colors ${
+                          activeTab === tab 
+                            ? 'bg-[#1F2937] text-white font-semibold' 
+                            : 'text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-                    <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>talktechtome-eval.sh</span>
+
+                  <div className="text-[11px] font-mono text-slate-400 hidden sm:flex items-center gap-1.5">
+                    <span className="text-slate-500">Catalog:</span>
+                    <span className="text-white font-semibold">50+ Reviews</span>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                    LIVE
-                  </span>
                 </div>
 
-                {/* Simulated Tech Evaluation Console */}
-                <div className="p-5 font-mono text-xs space-y-4">
-                  
-                  {/* Console line 1 */}
-                  <div className="space-y-1">
-                    <div className="text-slate-400 flex items-center gap-2">
-                      <span className="text-cyan-400">$</span>
-                      <span>inspect-tool --target=Synthesia</span>
-                    </div>
-                    <div className="pl-4 py-2 bg-slate-900/80 rounded-lg border border-slate-800 text-slate-300 space-y-1">
-                      <div className="flex justify-between text-[11px]">
-                        <span className="text-slate-400">Category:</span>
-                        <span className="text-cyan-300 font-semibold">Generative AI Video / Avatars</span>
-                      </div>
-                      <div className="flex justify-between text-[11px]">
-                        <span className="text-slate-400">Key Feature:</span>
-                        <span className="text-slate-200">Custom Studio Avatars & Voice Clone</span>
-                      </div>
-                      <div className="flex justify-between text-[11px]">
-                        <span className="text-slate-400">Verdict:</span>
-                        <span className="text-emerald-400 font-semibold">Production Ready for Enterprise</span>
-                      </div>
-                    </div>
+                {/* Tasks Chips Pill Bar */}
+                <div className="mb-4">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2">
+                    Filter by Task / Modality:
                   </div>
-
-                  {/* Console line 2 */}
-                  <div className="space-y-1">
-                    <div className="text-slate-400 flex items-center gap-2">
-                      <span className="text-purple-400">$</span>
-                      <span>benchmark --ide=Cursor</span>
-                    </div>
-                    <div className="pl-4 py-2 bg-slate-900/80 rounded-lg border border-slate-800 text-slate-300 space-y-1">
-                      <div className="flex justify-between text-[11px]">
-                        <span className="text-slate-400">Model Engine:</span>
-                        <span className="text-purple-300 font-semibold">Claude 3.5 Sonnet / Composer</span>
-                      </div>
-                      <div className="flex justify-between text-[11px]">
-                        <span className="text-slate-400">Coding Speedup:</span>
-                        <span className="text-emerald-400 font-semibold">+3.8x refactoring velocity</span>
-                      </div>
-                    </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {HF_EXPLORER_TASKS.map((task) => (
+                      <button
+                        key={task}
+                        onClick={() => setSelectedTask(task)}
+                        className={`text-xs px-2.5 py-1 rounded-md border transition-all ${
+                          selectedTask === task
+                            ? 'bg-[#FFBF00]/15 text-[#FFBF00] border-[#FFBF00]/40 font-semibold'
+                            : 'bg-[#111827] text-slate-400 border-[#1F2937] hover:text-slate-200 hover:border-slate-700'
+                        }`}
+                      >
+                        {task}
+                      </button>
+                    ))}
                   </div>
-
-                  {/* Highlights Card in Console */}
-                  <div className="pt-2 border-t border-slate-800/80">
-                    <div className="flex items-center justify-between text-slate-400 text-[11px] mb-2">
-                      <span className="flex items-center gap-1 text-slate-300">
-                        <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                        Next Deep Dive Drops Weekly
-                      </span>
-                      <span className="text-slate-500">talktechtome.co.uk</span>
-                    </div>
-                    <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-cyan-400 to-purple-500 h-full w-4/5 rounded-full" />
-                    </div>
-                  </div>
-
                 </div>
 
-                {/* Footer badge */}
-                <div className="px-5 py-3 bg-[#0a0f1d] border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span className="text-slate-300">Host: GCP Cloud Run</span>
+                {/* Parameter Scale Bar */}
+                <div className="mb-5 p-3 rounded-xl bg-[#111827]/80 border border-[#1F2937]">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+                    <span className="flex items-center gap-1.5">
+                      <SlidersHorizontal className="w-3 h-3 text-slate-400" />
+                      Scale & Architecture Target:
+                    </span>
+                    <span className="text-cyan-400 font-semibold">{paramFilter}</span>
                   </div>
-                  <span className="font-mono text-[11px] text-slate-500">London, UK</span>
+                  <div className="flex items-center justify-between gap-1 text-[10px] font-mono text-slate-400">
+                    {['< 7B', '14B', '70B', 'MoE Architecture', 'Agentic IDE'].map((scale) => (
+                      <button
+                        key={scale}
+                        onClick={() => setParamFilter(scale)}
+                        className={`px-2 py-0.5 rounded transition-colors ${
+                          paramFilter === scale
+                            ? 'bg-cyan-500/20 text-cyan-300 font-semibold'
+                            : 'hover:text-slate-200'
+                        }`}
+                      >
+                        {scale}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Model / Tool Cards List */}
+                <div className="space-y-2">
+                  {(filteredModels.length > 0 ? filteredModels : HF_EXPLORER_MODELS).slice(0, 4).map((tool) => (
+                    <a
+                      key={tool.id}
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 rounded-xl bg-[#111827] hover:bg-[#161F33] border border-[#1F2937] hover:border-slate-700 transition-all group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#1F2937] flex items-center justify-center text-base shrink-0 group-hover:scale-105 transition-transform">
+                          {tool.icon}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-semibold text-white group-hover:text-[#FFBF00] transition-colors font-mono">
+                              {tool.name}
+                            </span>
+                            {tool.badge && (
+                              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                                {tool.badge}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-400">
+                            {tool.category} &bull; <span className="text-slate-500">{tool.updated}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Right Stats */}
+                      <div className="flex items-center gap-3 text-xs font-mono text-slate-400">
+                        <span className="hidden sm:flex items-center gap-1">
+                          <Download className="w-3 h-3 text-slate-500" />
+                          {tool.downloadsOrViews}
+                        </span>
+                        <span className="flex items-center gap-1 text-slate-300">
+                          <Star className="w-3 h-3 text-amber-400" />
+                          {tool.likes}
+                        </span>
+                      </div>
+                    </a>
+                  ))}
                 </div>
 
               </div>
-            </div>
-          </div>
 
+              {/* Card Bottom Bar */}
+              <div className="pt-4 mt-4 border-t border-[#1F2937] flex items-center justify-between text-xs text-slate-400">
+                <span className="flex items-center gap-1 text-slate-400">
+                  <Flame className="w-3.5 h-3.5 text-orange-400" />
+                  <span>Curated & benchmarked by <strong>{BRAND_INFO.creator}</strong></span>
+                </span>
+                <a 
+                  href={BRAND_INFO.socials.youtube} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cyan-400 hover:underline flex items-center gap-1"
+                >
+                  View on YouTube <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
+            </div>
+
+          </div>
         </div>
+
       </div>
     </section>
   );

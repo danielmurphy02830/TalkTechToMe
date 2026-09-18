@@ -8,18 +8,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-          950: '#042f2e',
+        hf: {
+          bg: '#0B0F19',
+          surface: '#111827',
+          card: '#151C2E',
+          hover: '#1E293B',
+          border: '#1F2937',
+          borderLight: '#374151',
+          yellow: '#FFBF00',
+          yellowDark: '#D99B00',
+          orange: '#FF8800',
+          purple: '#8B5CF6',
+          pink: '#EC4899',
+          cyan: '#06B6D4',
+          blue: '#3B82F6',
+          textMuted: '#9CA3AF',
+          textSubtle: '#6B7280'
         },
         cyber: {
           cyan: '#00f0ff',
@@ -27,12 +31,6 @@ export default {
           violet: '#a855f7',
           pink: '#ec4899',
           blue: '#3b82f6'
-        },
-        dark: {
-          bg: '#090d16',
-          surface: '#0f172a',
-          card: '#131e36',
-          border: '#1e293b'
         }
       },
       fontFamily: {
@@ -41,13 +39,6 @@ export default {
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
       }
     },
   },

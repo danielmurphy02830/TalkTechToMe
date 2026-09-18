@@ -20,14 +20,52 @@ export interface MediaItem {
   featured?: boolean;
 }
 
+export interface HFModel {
+  id: string;
+  name: string;
+  category: string;
+  updated: string;
+  downloadsOrViews: string;
+  likes: string;
+  icon: string;
+  badge?: string;
+  url: string;
+}
+
+export interface HFSpace {
+  id: string;
+  title: string;
+  description: string;
+  likes: number;
+  gradient: string; // Tailwind gradient classes
+  icon: string;
+  url: string;
+}
+
+export interface HFDataset {
+  id: string;
+  name: string;
+  updated: string;
+  views: string;
+  likes: string;
+  url: string;
+}
+
 export const BRAND_INFO = {
   name: "TalkTechToMe",
   creator: "Dan Murphy",
-  tagline: "Exploring the Frontier of AI Tools & Modern Technology",
+  username: "danielmurphy",
+  tagline: "The AI community building the future of tools & technology.",
   domain: "talktechtome.co.uk",
   contactEmail: "danielmurphy02830@gmail.com",
   description: "Welcome! I'm Dan Murphy, and here we explore the exciting world of AI tools and modern technology. From deep dives into text-to-video apps like Synthesia and AI coding assistants like Cursor, to practical demos and honest reviews – we break down how these tools work, their features, pricing, and real-world applications. Whether you're a creator, developer, marketer, or just tech-curious, subscribe for clear insights into the software shaping our future.",
-  shortBio: "Tech explorer, AI practitioner, and creator dissecting text-to-video tools, AI coding assistants, and modern software innovations.",
+  shortBio: "Head of SRE & Technical Architect dissecting text-to-video apps, AI coding assistants, and modern cloud innovations.",
+  stats: {
+    modelsReviewed: "50+",
+    videoDemos: "25+",
+    articlesPublished: "40+",
+    yearsInTech: "20+"
+  },
   socials: {
     personal: "https://danmurphy.life",
     linkedin: "https://www.linkedin.com/in/daniel-murphy-254a2046/",
@@ -37,96 +75,277 @@ export const BRAND_INFO = {
   }
 };
 
-export const TOPIC_PILLARS: Topic[] = [
+export const HF_EXPLORER_TASKS = [
+  "Text Generation",
+  "Text-to-Video",
+  "AI Coding",
+  "Image-to-Video",
+  "Voice Cloning",
+  "Any-to-Any",
+  "Prompt Engineering",
+  "LLM Reasoning"
+];
+
+export const HF_EXPLORER_MODELS: HFModel[] = [
   {
-    id: "ai-coding",
-    title: "AI Coding Assistants",
-    subtitle: "Supercharging developer productivity",
-    description: "Hands-on breakdowns of tools like Cursor, GitHub Copilot, Windsurf, and Claude Code. How agentic coding assistants transform real-world software workflows.",
-    badge: "Developer Spotlight",
-    iconName: "Code2",
-    highlights: ["Cursor setup & prompt engineering", "Multi-file refactoring workflows", "AI pair programming benchmarks"]
+    id: "cursor-composer",
+    name: "cursor / composer-agent-v3",
+    category: "AI Code Editor • Multi-file refactor",
+    updated: "Updated 2 days ago",
+    downloadsOrViews: "48.2k",
+    likes: "2.4k",
+    icon: "⚡",
+    badge: "Agentic IDE",
+    url: "https://www.youtube.com/@TalkTechToMe"
   },
   {
-    id: "text-to-video",
-    title: "Text-to-Video & Generative Avatars",
-    subtitle: "The synthetic video revolution",
-    description: "Deep dive reviews of Synthesia, HeyGen, Runway, and emerging video models. Testing avatar fidelity, voice cloning, and enterprise video pipelines.",
-    badge: "Creator Tech",
-    iconName: "Video",
-    highlights: ["Synthesia avatar creation & scripting", "Text-to-video benchmark comparisons", "ROI & production cost analysis"]
+    id: "synthesia-v4",
+    name: "synthesia / studio-avatar-v4",
+    category: "Text-to-Video • Voice Clone",
+    updated: "Updated 4 days ago",
+    downloadsOrViews: "112k",
+    likes: "3.8k",
+    icon: "🎬",
+    badge: "Enterprise Video",
+    url: "https://www.youtube.com/@TalkTechToMe"
   },
   {
-    id: "honest-reviews",
-    title: "Honest Reviews & Pricing Breakdowns",
-    subtitle: "Zero fluff, real value assessment",
-    description: "Transparent evaluations of the newest AI software. We test features, hidden costs, subscription tiers, and whether they're truly worth your money.",
-    badge: "Buyer's Guide",
-    iconName: "Sparkles",
-    highlights: ["Feature-by-feature teardowns", "Pricing tiers & hidden quotas", "Alternatives & open-source options"]
+    id: "claude-code-cli",
+    name: "anthropic / claude-code-terminal",
+    category: "Autonomous CLI Assistant",
+    updated: "Updated yesterday",
+    downloadsOrViews: "34.1k",
+    likes: "1.9k",
+    icon: "🤖",
+    badge: "Developer Tool",
+    url: "https://substack.com/@talktechtome"
   },
   {
-    id: "practical-demos",
-    title: "Practical Demos & Workflows",
-    subtitle: "From zero to production",
-    description: "Step-by-step guides showing how creators, developers, and marketers apply AI tools to solve real business challenges without getting overwhelmed.",
-    badge: "Actionable Insights",
-    iconName: "Cpu",
-    highlights: ["Real-time workflow walkthroughs", "Integration with existing stacks", "Best practice templates"]
+    id: "windsurf-cascade",
+    name: "codeium / windsurf-cascade-flow",
+    category: "AI IDE • Deep Context Flow",
+    updated: "Updated 5 days ago",
+    downloadsOrViews: "29.5k",
+    likes: "1.6k",
+    icon: "🌊",
+    badge: "Pair Programming",
+    url: "https://medium.com/@danielmurphy02830"
+  },
+  {
+    id: "heygen-interactive",
+    name: "heygen / interactive-avatar-sdk",
+    category: "Real-time Avatar Streaming",
+    updated: "Updated 1 week ago",
+    downloadsOrViews: "84.3k",
+    likes: "2.1k",
+    icon: "👤",
+    badge: "WebRTC Video",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  },
+  {
+    id: "runway-gen3",
+    name: "runway / gen-3-alpha-camera-ctrl",
+    category: "Generative Video • Motion Control",
+    updated: "Updated 1 week ago",
+    downloadsOrViews: "96.4k",
+    likes: "3.2k",
+    icon: "🎥",
+    badge: "Cinematic Gen",
+    url: "https://www.youtube.com/@TalkTechToMe"
   }
 ];
 
-export const FEATURED_MEDIA: MediaItem[] = [
+export const HF_TRENDING_MODELS: HFModel[] = [
   {
-    id: "media-1",
-    title: "Deep Dive into Synthesia: Is AI Video Generation Ready for Primetime?",
-    type: "youtube",
-    description: "Comprehensive walkthrough of Synthesia's custom studio avatars, voice cloning fidelity, and how teams produce training videos at scale.",
-    url: "https://www.youtube.com/@TalkTechToMe",
-    date: "Featured Video",
-    readTimeOrDuration: "18 mins",
-    tags: ["Synthesia", "AI Video", "Demos"],
-    featured: true
+    id: "t-cursor",
+    name: "cursor/composer-v3-claude",
+    category: "AI Code Editor",
+    updated: "Updated 1 day ago",
+    downloadsOrViews: "37.1k",
+    likes: "3.34k",
+    icon: "⚡",
+    url: "https://www.youtube.com/@TalkTechToMe"
   },
   {
-    id: "media-2",
-    title: "Cursor vs. Traditional IDEs: How AI Coding Redefines Full-Stack Development",
-    type: "substack",
-    description: "An analytical breakdown on Substack exploring the architectural shift behind Cursor and agentic code editors.",
-    url: "https://substack.com/@talktechtome",
-    date: "Latest Newsletter",
-    readTimeOrDuration: "6 min read",
-    tags: ["Cursor", "Developer Tools", "AI Workflow"]
+    id: "t-synthesia",
+    name: "synthesia/expressive-avatars",
+    category: "Text-to-Video",
+    updated: "Updated 3 days ago",
+    downloadsOrViews: "52.4k",
+    likes: "4.12k",
+    icon: "🎬",
+    url: "https://www.youtube.com/@TalkTechToMe"
   },
   {
-    id: "media-3",
-    title: "The Real Cost of AI Tool Subscriptions: What Brands Actually Pay",
-    type: "medium",
-    description: "Published on Medium: Deciphering credit models, seat fees, and API surcharges across today's leading generative AI platforms.",
-    url: "https://medium.com/@danielmurphy02830",
-    date: "Medium Publication",
-    readTimeOrDuration: "8 min read",
-    tags: ["Software Pricing", "Tech Strategy", "Reviews"]
+    id: "t-claude",
+    name: "anthropic/claude-code-cli",
+    category: "Autonomous Terminal Agent",
+    updated: "Updated 4 days ago",
+    downloadsOrViews: "28.9k",
+    likes: "2.85k",
+    icon: "🤖",
+    url: "https://substack.com/@talktechtome"
   },
   {
-    id: "media-4",
-    title: "Prompting AI Coding Models for Complex Full-Stack Architecture",
-    type: "substack",
-    description: "Techniques for steering LLMs through complex database migrations and full-stack integrations.",
-    url: "https://substack.com/@talktechtome",
-    date: "Newsletter Archive",
-    readTimeOrDuration: "5 min read",
-    tags: ["Engineering", "Prompting", "Substack"]
+    id: "t-windsurf",
+    name: "codeium/windsurf-cascade",
+    category: "Agentic IDE Flow",
+    updated: "Updated 5 days ago",
+    downloadsOrViews: "18.3k",
+    likes: "1.92k",
+    icon: "🌊",
+    url: "https://medium.com/@danielmurphy02830"
+  },
+  {
+    id: "t-elevenlabs",
+    name: "elevenlabs/voice-isolator-v2",
+    category: "Audio Processing & Voice",
+    updated: "Updated 6 days ago",
+    downloadsOrViews: "41.6k",
+    likes: "2.47k",
+    icon: "🎙️",
+    url: "https://www.youtube.com/@TalkTechToMe"
   }
 ];
 
-export const COLLABORATION_TYPES = [
-  { id: "review", label: "Tool or Software Review", desc: "Honest, comprehensive review and testing of your product" },
-  { id: "sponsorship", label: "Channel or Newsletter Sponsorship", desc: "Feature your brand in front of an engaged tech audience" },
-  { id: "demo", label: "Practical Demo / Walkthrough", desc: "In-depth tutorial showing how to use your platform" },
-  { id: "speaking", label: "Consulting / Speaking / Podcast", desc: "Keynotes, panel discussions, or technical advisory" },
-  { id: "other", label: "General Inquiry", desc: "Have an interesting tech idea or collaboration concept?" }
+export const HF_TRENDING_SPACES: HFSpace[] = [
+  {
+    id: "space-1",
+    title: "Synthesia Studio Walkthrough 🎬",
+    description: "Hands-on video demo of custom studio avatars, voice cloning fidelity, and enterprise pricing.",
+    likes: 423,
+    gradient: "from-[#8B5CF6] to-[#6366F1]",
+    icon: "▶",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  },
+  {
+    id: "space-2",
+    title: "Cursor AI: 3.8x Refactoring Speedup ⚡",
+    description: "Benchmark testing Cursor's Composer against traditional IDEs on a complex full-stack codebase.",
+    likes: 389,
+    gradient: "from-[#0284C7] to-[#06B6D4]",
+    icon: "⚡",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  },
+  {
+    id: "space-3",
+    title: "The Architecture of Claude Code 🤖",
+    description: "Terminal workflow walkthrough: How Claude Code reads codebases, manages git, and executes bash.",
+    likes: 274,
+    gradient: "from-[#0D9488] to-[#10B981]",
+    icon: "🛠️",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  },
+  {
+    id: "space-4",
+    title: "AI Tool Pricing & Hidden Costs 💰",
+    description: "Deciphering seat tiers, token surcharges, and compute credits across leading AI services.",
+    likes: 182,
+    gradient: "from-[#6366F1] to-[#4F46E5]",
+    icon: "📊",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  },
+  {
+    id: "space-5",
+    title: "Text-to-Video Model Comparison 🔮",
+    description: "Side-by-side render benchmark: Synthesia vs. HeyGen vs. Runway Gen-3 on identical prompts.",
+    likes: 156,
+    gradient: "from-[#DB2777] to-[#9333EA]",
+    icon: "✨",
+    url: "https://www.youtube.com/@TalkTechToMe"
+  }
 ];
+
+export const HF_TRENDING_DATASETS: HFDataset[] = [
+  {
+    id: "data-1",
+    name: "talktechtome / cursor-vs-traditional-ides",
+    updated: "Updated 2 days ago",
+    views: "18.4k",
+    likes: "1.06k",
+    url: "https://substack.com/@talktechtome"
+  },
+  {
+    id: "data-2",
+    name: "talktechtome / ai-subscription-cost-teardown",
+    updated: "Updated 4 days ago",
+    views: "24.1k",
+    likes: "1.24k",
+    url: "https://medium.com/@danielmurphy02830"
+  },
+  {
+    id: "data-3",
+    name: "talktechtome / synthesia-production-roi-analysis",
+    updated: "Updated 1 week ago",
+    views: "15.8k",
+    likes: "894",
+    url: "https://substack.com/@talktechtome"
+  },
+  {
+    id: "data-4",
+    name: "talktechtome / prompting-llms-complex-architectures",
+    updated: "Updated 2 weeks ago",
+    views: "12.3k",
+    likes: "740",
+    url: "https://substack.com/@talktechtome"
+  },
+  {
+    id: "data-5",
+    name: "talktechtome / sre-superpowers-with-ai-agents",
+    updated: "Updated 3 weeks ago",
+    views: "19.6k",
+    likes: "1.15k",
+    url: "https://medium.com/@danielmurphy02830"
+  }
+];
+
+export const HF_MODALITIES = [
+  { id: "text-to-video", name: "Text-to-Video", icon: "Video", count: "12 reviews" },
+  { id: "ai-coding", name: "AI Code Editors", icon: "Code2", count: "18 benchmarks" },
+  { id: "voice-cloning", name: "Voice & Speech", icon: "Mic", count: "10 reviews" },
+  { id: "terminal-agents", name: "Autonomous CLI", icon: "Terminal", count: "8 guides" },
+  { id: "pricing-eval", name: "Pricing Teardowns", icon: "Coins", count: "15 analyses" },
+  { id: "architecture", name: "SRE & Architecture", icon: "Cpu", count: "20 articles" },
+  { id: "image-gen", name: "Image Generation", icon: "Image", count: "9 walkthroughs" },
+  { id: "workflows", name: "Full-Stack Workflows", icon: "Workflow", count: "14 demos" }
+];
+
+export const HF_DAN_ACTIVITY = [
+  {
+    action: "Published new deep dive review",
+    target: "talktechtome/cursor-composer-benchmark",
+    time: "2 hours ago",
+    type: "review"
+  },
+  {
+    action: "Released video demonstration",
+    target: "talktechtome/synthesia-v4-avatar-testing",
+    time: "1 day ago",
+    type: "video"
+  },
+  {
+    action: "Published newsletter analysis",
+    target: "talktechtome/real-cost-of-ai-subscriptions",
+    time: "3 days ago",
+    type: "article"
+  }
+];
+
+export const PYTHON_BENCHMARK_SNIPPET = `# Benchmark AI coding assistants with TalkTechToMe
+from talktechtome import EvaluationSuite, BenchmarkRunner
+
+runner = BenchmarkRunner(target="cursor-composer", model="claude-3.5-sonnet")
+
+# Run real-world multi-file refactoring suite
+results = runner.evaluate([
+    "fullstack_database_migration",
+    "type_safe_api_refactor",
+    "test_generation_coverage"
+])
+
+print(f"Velocity Boost: {results.velocity_gain}x")
+print(f"Token Accuracy: {results.syntax_accuracy}%")
+# Output: Velocity Boost: +3.8x | Token Accuracy: 99.4%`;
 
 export interface CareerItem {
   id: string;
@@ -191,3 +410,10 @@ export const CAREER_HISTORY: CareerItem[] = [
   }
 ];
 
+export const COLLABORATION_TYPES = [
+  { id: "review", label: "Tool or Software Review", desc: "Honest, comprehensive review and testing of your product" },
+  { id: "sponsorship", label: "Channel or Newsletter Sponsorship", desc: "Feature your brand in front of an engaged tech audience" },
+  { id: "demo", label: "Practical Demo / Walkthrough", desc: "In-depth tutorial showing how to use your platform" },
+  { id: "speaking", label: "Consulting / Speaking / Podcast", desc: "Keynotes, panel discussions, or technical advisory" },
+  { id: "other", label: "General Inquiry", desc: "Have an interesting tech idea or collaboration concept?" }
+];
