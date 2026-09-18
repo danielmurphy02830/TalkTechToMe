@@ -66,25 +66,25 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Nav Items */}
           <nav className="hidden lg:flex items-center gap-6 text-xs font-medium text-slate-300">
-            <a href="#trending" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Code2 className="w-3.5 h-3.5 text-slate-400" />
-              <span>AI Tools</span>
+            <a href="#about" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <User className="w-3.5 h-3.5 text-slate-400" />
+              <span>About</span>
             </a>
-            <a href="#spaces" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <a href="#channels" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Sparkles className="w-3.5 h-3.5 text-[#FFBF00]" />
+              <span>Channels</span>
+            </a>
+            <a href="#latest-content" className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Video className="w-3.5 h-3.5 text-slate-400" />
-              <span>Spaces / Demos</span>
-            </a>
-            <a href="#articles" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <FileText className="w-3.5 h-3.5 text-slate-400" />
-              <span>Articles</span>
+              <span>Videos & Blogs</span>
             </a>
             <a href="#career" className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Briefcase className="w-3.5 h-3.5 text-slate-400" />
               <span>Career</span>
             </a>
-            <a href="#about" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <User className="w-3.5 h-3.5 text-slate-400" />
-              <span>About</span>
+            <a href="#collaborate" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Sparkles className="w-3.5 h-3.5 text-slate-400" />
+              <span>Collaborate</span>
             </a>
           </nav>
 
@@ -139,25 +139,25 @@ export const Navbar: React.FC = () => {
 
           <div className="flex flex-col space-y-2 pt-2 text-sm text-slate-200 font-medium">
             <a 
-              href="#trending" 
+              href="#about" 
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#111827]"
             >
-              <Code2 className="w-4 h-4 text-slate-400" /> AI Tools & Models
+              <User className="w-4 h-4 text-slate-400" /> What is TalkTechToMe
             </a>
             <a 
-              href="#spaces" 
+              href="#channels" 
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#111827]"
             >
-              <Video className="w-4 h-4 text-slate-400" /> Spaces & Demos
+              <Sparkles className="w-4 h-4 text-[#FFBF00]" /> Official Channels & Sites
             </a>
             <a 
-              href="#articles" 
+              href="#latest-content" 
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#111827]"
             >
-              <FileText className="w-4 h-4 text-slate-400" /> Articles & Publications
+              <Video className="w-4 h-4 text-slate-400" /> Latest Videos & Blogs
             </a>
             <a 
               href="#career" 
@@ -165,13 +165,6 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#111827]"
             >
               <Briefcase className="w-4 h-4 text-slate-400" /> Career Journey
-            </a>
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#111827]"
-            >
-              <User className="w-4 h-4 text-slate-400" /> About Dan Murphy
             </a>
             <a 
               href="#collaborate" 

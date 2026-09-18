@@ -44,13 +44,13 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <a href="#trending" className="hover:text-white transition-colors">AI Models & Tools</a>
+                <a href="#about" className="hover:text-white transition-colors">What is TalkTechToMe</a>
               </li>
               <li>
-                <a href="#spaces" className="hover:text-white transition-colors">Spaces & Demos</a>
+                <a href="#channels" className="hover:text-white transition-colors">Official Channels & Sites</a>
               </li>
               <li>
-                <a href="#articles" className="hover:text-white transition-colors">Articles & Guides</a>
+                <a href="#latest-content" className="hover:text-white transition-colors">Latest Videos & Blogs</a>
               </li>
               <li>
                 <a href="#career" className="hover:text-white transition-colors">Career Timeline</a>
