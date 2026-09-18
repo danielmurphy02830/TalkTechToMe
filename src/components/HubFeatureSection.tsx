@@ -49,9 +49,11 @@ export const HubFeatureSection: React.FC = () => {
                 {/* Left Mini Sidebar */}
                 <div className="sm:col-span-4 border-b sm:border-b-0 sm:border-r border-[#1F2937] pb-3 sm:pb-0 sm:pr-3 space-y-3 text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-xs font-bold text-white">
-                      DM
-                    </div>
+                    <img 
+                      src="/media/main-image.jpg" 
+                      alt="Dan Murphy" 
+                      className="w-7 h-7 rounded-full object-cover ring-1 ring-[#FFBF00]/50" 
+                    />
                     <div>
                       <div className="font-mono text-white text-xs font-semibold">danielmurphy</div>
                       <div className="text-[10px] text-slate-500">Creator</div>

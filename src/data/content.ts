@@ -55,6 +55,7 @@ export const BRAND_INFO = {
   name: "TalkTechToMe",
   creator: "Dan Murphy",
   username: "danielmurphy",
+  avatar: "/media/main-image.jpg",
   tagline: "The AI community building the future of tools & technology.",
   domain: "talktechtome.co.uk",
   contactEmail: "danielmurphy02830@gmail.com",
@@ -417,3 +418,38 @@ export const COLLABORATION_TYPES = [
   { id: "speaking", label: "Consulting / Speaking / Podcast", desc: "Keynotes, panel discussions, or technical advisory" },
   { id: "other", label: "General Inquiry", desc: "Have an interesting tech idea or collaboration concept?" }
 ];
+
+export interface GalleryPhoto {
+  id: string;
+  src: string;
+  caption: string;
+  category: string;
+}
+
+export const DAN_GALLERY: GalleryPhoto[] = [
+  {
+    id: "photo-awards",
+    src: "/media/ni-tech-awards-2026-finalist-linkedin.png",
+    caption: "NI Tech Awards Finalist",
+    category: "Recognition"
+  },
+  {
+    id: "photo-keynote",
+    src: "/media/IMG_3813.jpg",
+    caption: "Speaking at Tech & SRE Conferences",
+    category: "Keynote"
+  },
+  {
+    id: "photo-leadership",
+    src: "/media/1782974745268.jpg",
+    caption: "SRE & Architecture Community",
+    category: "Community"
+  },
+  {
+    id: "photo-writing",
+    src: "/media/Screenshot_20241022_161729_LinkedIn.jpg",
+    caption: "Thought Leadership & Tech Writing",
+    category: "Publication"
+  }
+];
+

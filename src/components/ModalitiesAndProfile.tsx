@@ -13,7 +13,7 @@ import {
   Award,
   Globe
 } from 'lucide-react';
-import { HF_MODALITIES, BRAND_INFO } from '../data/content';
+import { HF_MODALITIES, BRAND_INFO, DAN_GALLERY } from '../data/content';
 import { LinkedinIcon } from './Icons';
 
 const getModalityIcon = (iconName: string) => {
@@ -105,10 +105,13 @@ export const ModalitiesAndProfile: React.FC = () => {
               <div className="p-5 rounded-xl bg-[#0E1526] border border-[#1F2937] space-y-4">
                 <div className="flex items-center gap-4">
                   {/* Avatar */}
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-600 to-purple-600 p-0.5 shrink-0 shadow-md">
-                    <div className="w-full h-full rounded-full bg-[#0B0F19] flex items-center justify-center font-bold text-lg text-white">
-                      DM
-                    </div>
+                  <div className="relative">
+                    <img
+                      src="/media/main-image.jpg"
+                      alt="Dan Murphy"
+                      className="w-16 h-16 rounded-full object-cover ring-2 ring-[#FFBF00] shadow-md shrink-0"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#111827]" />
                   </div>
 
                   <div>
@@ -178,6 +181,51 @@ export const ModalitiesAndProfile: React.FC = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* Media & Speaking Highlights Gallery */}
+        <div className="mt-14 pt-10 border-t border-[#1F2937]">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
+            <div>
+              <div className="text-xs font-mono text-[#FFBF00] uppercase tracking-wider font-semibold">
+                In The Community
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                Speaking, Recognition & Industry Moments
+              </h3>
+            </div>
+            <p className="text-xs text-slate-400 font-mono">
+              Keynotes &bull; Tech Awards &bull; Publications
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {DAN_GALLERY.map((photo) => (
+              <div
+                key={photo.id}
+                className="group relative rounded-xl overflow-hidden bg-[#111827] border border-[#1F2937] hover:border-slate-600 transition-all shadow-md"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden bg-[#090D16]">
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3.5 bg-[#111827] space-y-1">
+                  <div className="flex items-center justify-between text-[10px] font-mono">
+                    <span className="text-[#FFBF00] uppercase font-semibold">
+                      {photo.category}
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-semibold text-white line-clamp-1 group-hover:text-cyan-300 transition-colors">
+                    {photo.caption}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

@@ -34,9 +34,29 @@ export const Hero: React.FC = () => {
             {/* Left Column: Brand & Hero Headline */}
             <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1F2937] bg-gradient-to-b from-[#111827] to-[#0D121F]">
               <div>
-                {/* Yellow Hugging Face style mascot emoji */}
-                <div className="w-16 h-16 rounded-2xl bg-[#FFBF00] flex items-center justify-center text-3xl shadow-lg shadow-[#FFBF00]/10 mb-6 transform -rotate-2 hover:rotate-0 transition-transform">
-                  🤗
+                {/* Creator Header with Main Image */}
+                <div className="flex items-center gap-3.5 mb-6">
+                  <div className="relative">
+                    <img
+                      src="/media/main-image.jpg"
+                      alt="Dan Murphy - TalkTechToMe"
+                      className="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FFBF00] shadow-lg shadow-[#FFBF00]/15"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#FFBF00] flex items-center justify-center text-xs shadow-sm">
+                      🎙️
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-bold text-white font-mono">{BRAND_INFO.creator}</span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#FFBF00]/20 text-[#FFBF00] border border-[#FFBF00]/30 font-bold">
+                        PRO CREATOR
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-400 font-mono mt-0.5">
+                      @{BRAND_INFO.username} &bull; Head of SRE
+                    </p>
+                  </div>
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-5">
